@@ -13,7 +13,7 @@ navToggle.addEventListener("click", () => {
 });
 
 
-window.onload = loadDoc;
+window.onload = traerApi;
 
 function loadDoc() {
   const data = null;
@@ -51,4 +51,50 @@ function loadDoc() {
   );
   xhr.setRequestHeader('X-RapidAPI-Host', 'moviesdatabase.p.rapidapi.com');
   xhr.send(data);
+}
+
+function traerApi() {
+  const apiKey = '356e9ef6b35f3477dd1929c933f50cb0';
+  const url = `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}&language=es-ES`;
+
+  const xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      const response = JSON.parse(this.responseText);
+      console.log(response);
+      const peliculas = response.results;
+      console.log(peliculas);
+      //const peliculas = response;
+
+      var currentDiv = document.getElementById('peliculas');
+      const urlBase="https://image.tmdb.org/t/p/";
+      const tamanio="w342"
+      for (i = 0; i < peliculas.length; i++) {
+        const newImg = document.createElement('img');
+        const src=urlBase+tamanio+peliculas[i].poster_path;
+        newImg.src = src;
+        newImg.setAttribute('width', '25%');
+        currentDiv.appendChild(newImg);
+
+        const newH = document.createElement('h2');
+        newH.textContent = peliculas[i].title;
+        currentDiv.appendChild(newH);
+
+        const newP = document.createElement('p');
+        newP.textContent = peliculas[i].overview;
+        currentDiv.appendChild(newP);
+
+        const newPValoracion = document.createElement('p');
+        newPValoracion.textContent = peliculas[i].vote_average;
+        currentDiv.appendChild(newPValoracion);
+
+        if (i != peliculas.length - 1) {
+          const newBr = document.createElement('br');
+          currentDiv.appendChild(newBr);
+        }
+      }
+    }
+  };
+  xhttp.open("GET", url, true);
+  xhttp.send();
 }
