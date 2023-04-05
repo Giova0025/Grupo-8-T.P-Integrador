@@ -126,7 +126,7 @@
   width: 100%;
   border: red none;
   height: 643px;
-  background-image: url(./fondo-registro.jpg);
+  background-image: url(./img/fondo-registro.jpg);
   background-color: rgb(50 50 50);
   background-blend-mode: soft-light;
   background-repeat: no-repeat;
@@ -164,6 +164,7 @@ h1{
   border-radius: 20px;
   padding: 10px 10px;
   color:rgb(0, 0, 0);
+  cursor: pointer;
 }
 
 .boton-registro:hover{
@@ -171,4 +172,77 @@ h1{
   border: 2px rgb(255, 255, 255) solid;
   color: rgb(255, 255, 255);
 }
+
+.desactivo{
+  display: none;
+}
+
+
+/*footer*/
+
+.footer{
+  width: 100%;
+  background-color: rgb(15, 14, 14);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.redes{
+  display: flex;
+  padding-top: 40px;
+  padding-bottom: 20px;
+  gap: 30px;
+  border: 10px;
+}
+
+.face{
+  background-image: url(./img/face.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 10px;
+  height: 50px;
+  width: 50px;
+}
+
+.whats{
+  background-image: url(./img/whats.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 10px;
+  height: 50px;
+  width: 50px;
+}
+
+.insta{
+  background-image: url(./img/insta.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 10px;
+  height: 50px;
+  width: 50px;
+}
+
+.extras{
+  padding-top: 20px;
+  padding-bottom: 40px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.extra-ul{
+  display: flex;
+  gap: 20px;
+}
+
+.extra-a{
+  color: white;
+}
+
+.derechos{
+  color: white;
+}
+
 

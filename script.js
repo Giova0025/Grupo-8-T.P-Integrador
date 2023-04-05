@@ -12,6 +12,16 @@ navToggle.addEventListener("click", () => {
   }
 });
 
+/*registro*/
+
+const boton = document.getElementById("miBoton");
+const elementoActivo = document.getElementById("cuerpoRegistro");
+boton.addEventListener("click", () =>{
+  elementoActivo.classList.remove("activo");
+  elementoActivo.classList.add("desactivo");
+});
+
+
 
 window.onload = traerApi;
 
