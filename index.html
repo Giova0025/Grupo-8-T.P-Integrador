@@ -33,7 +33,14 @@
             </button>
         </div>
         <div class="cuerpo2"></div>
-        <div id="peliculas"></div>
+        <div class="paginador">
+            <button class="first-page" onclick="firstPage()" disabled>Primera</button>
+            <button class="previous-page" onclick="previousPage()" disabled>Anterior</button>
+            <span class="current-page">Página 1</span>
+            <button class="next-page" onclick="nextPage()" disabled>Siguiente</button>
+            <button class="last-page" onclick="lastPage()" disabled>Última</button>
+        </div>
+        <div class="peliculas"></div>
     </main>
     <footer></footer>
 </html>
