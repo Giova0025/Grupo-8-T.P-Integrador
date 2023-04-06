@@ -35,6 +35,7 @@ const lastPageButton = document.querySelector('.last-page');
 
 let currentPage = 1;
 let total_pages = 500; //a pesar de q la api diga que tiene 548 paginas, solo llega hasta 500
+let consumiApi = false;
 
 function nextPage(){
   currentPage+=1;
@@ -120,8 +121,12 @@ function traerApi() {
           peliculasDiv.appendChild(newBr);
         }
 
-        nextPageButton.removeAttribute("disabled");
-        lastPageButton.removeAttribute("disabled");
+        if (consumiApi == false){
+          nextPageButton.removeAttribute("disabled");
+          lastPageButton.removeAttribute("disabled");
+          consumiApi=true;
+        }
+        
       }
     }
   };
