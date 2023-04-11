@@ -25,68 +25,47 @@ boton.addEventListener("click", () =>{
 
 window.onload = traerApi;
 
-const apiKey = '356e9ef6b35f3477dd1929c933f50cb0';
-const peliculasDiv = document.querySelector('.peliculas');
-const firstPageButton = document.querySelector('.first-page');
-const previousPageButton = document.querySelector('.previous-page');
-const currentPageElement = document.querySelector('.current-page');
-const nextPageButton = document.querySelector('.next-page');
-const lastPageButton = document.querySelector('.last-page');
+function loadDoc() {
+  const data = null;
+  const xhr = new XMLHttpRequest();
+  xhr.withCredentials = true;
+  xhr.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      results = JSON.parse(this.responseText).results;
+      console.log(results);
+      var currentDiv = document.getElementById('peliculas');
+      for (i = 0; i < results.length; i++) {
+        const newImg = document.createElement('img');
+        newImg.src = results[i].primaryImage.url;
+        newImg.setAttribute('width', '25%');
+        currentDiv.appendChild(newImg);
 
-let currentPage = 1;
-let total_pages = 500; //a pesar de q la api diga que tiene 548 paginas, solo llega hasta 500
-let consumiApi = false;
+        const newP = document.createElement('p');
+        newP.textContent = results[i].titleText.text;
+        currentDiv.appendChild(newP);
 
-function nextPage(){
-  currentPage+=1;
-  currentPageElement.textContent=`Página ${currentPage}`;
-  firstPageButton.removeAttribute("disabled");
-  previousPageButton.removeAttribute("disabled");
-  if(currentPage==total_pages){
-    nextPageButton.setAttribute("disabled","");
-    lastPageButton.setAttribute("disabled","");
-  }
-  peliculasDiv.innerHTML="";
-  traerApi();
-}
-
-function lastPage(){
-  currentPage=total_pages;
-  currentPageElement.textContent=`Página ${currentPage}`;
-  firstPageButton.removeAttribute("disabled");
-  previousPageButton.removeAttribute("disabled");
-  nextPageButton.setAttribute("disabled","");
-  lastPageButton.setAttribute("disabled","");
-  peliculasDiv.innerHTML="";
-  traerApi();
-}
-
-function previousPage(){
-  currentPage-=1;
-  currentPageElement.textContent=`Página ${currentPage}`;
-  nextPageButton.removeAttribute("disabled");
-  lastPageButton.removeAttribute("disabled");
-  if(currentPage==1){
-    firstPageButton.setAttribute("disabled","");
-    previousPageButton.setAttribute("disabled","");
-  }
-  peliculasDiv.innerHTML="";
-  traerApi();
-}
-
-function firstPage(){
-  currentPage=1;
-  currentPageElement.textContent=`Página ${currentPage}`;
-  nextPageButton.removeAttribute("disabled");
-  lastPageButton.removeAttribute("disabled");
-  firstPageButton.setAttribute("disabled","");
-  previousPageButton.setAttribute("disabled","");
-  peliculasDiv.innerHTML="";
-  traerApi();
+        if (i != results.length - 1) {
+          const newBr = document.createElement('br');
+          currentDiv.appendChild(newBr);
+        }
+      }
+    }
+  };
+  xhr.open(
+    'GET',
+    'https://moviesdatabase.p.rapidapi.com/titles?titleType=movie&list=top_rated_250'
+  );
+  xhr.setRequestHeader(
+    'X-RapidAPI-Key',
+    'a8d767de57mshb85f8e4cffe244ep130fb3jsn81f02efa9e64'
+  );
+  xhr.setRequestHeader('X-RapidAPI-Host', 'moviesdatabase.p.rapidapi.com');
+  xhr.send(data);
 }
 
 function traerApi() {
-  const url = `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}&language=es-ES&page=${currentPage}`;
+  const apiKey = '356e9ef6b35f3477dd1929c933f50cb0';
+  const url = `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}&language=es-ES`;
 
   const xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
@@ -95,6 +74,9 @@ function traerApi() {
       console.log(response);
       const peliculas = response.results;
       console.log(peliculas);
+      //const peliculas = response;
+
+      var currentDiv = document.getElementById('peliculas');
       const urlBase="https://image.tmdb.org/t/p/";
       const tamanio="w342"
       for (i = 0; i < peliculas.length; i++) {
@@ -102,49 +84,27 @@ function traerApi() {
         const src=urlBase+tamanio+peliculas[i].poster_path;
         newImg.src = src;
         newImg.setAttribute('width', '25%');
-        peliculasDiv.appendChild(newImg);
+        currentDiv.appendChild(newImg);
 
         const newH = document.createElement('h2');
         newH.textContent = peliculas[i].title;
-        peliculasDiv.appendChild(newH);
+        currentDiv.appendChild(newH);
 
         const newP = document.createElement('p');
         newP.textContent = peliculas[i].overview;
-        peliculasDiv.appendChild(newP);
+        currentDiv.appendChild(newP);
 
         const newPValoracion = document.createElement('p');
         newPValoracion.textContent = peliculas[i].vote_average;
-        peliculasDiv.appendChild(newPValoracion);
+        currentDiv.appendChild(newPValoracion);
 
         if (i != peliculas.length - 1) {
           const newBr = document.createElement('br');
-          peliculasDiv.appendChild(newBr);
+          currentDiv.appendChild(newBr);
         }
-
-        if (consumiApi == false){
-          nextPageButton.removeAttribute("disabled");
-          lastPageButton.removeAttribute("disabled");
-          consumiApi=true;
-        }
-        
       }
     }
   };
   xhttp.open("GET", url, true);
   xhttp.send();
 }
-
-/*
-function fetchMovies(page) {
-  const url = `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}&page=${page}`;
-
-  axios.get(url)
-    .then(response => {
-      const movies = response.data.results;
-      totalPages = response.data.total_pages;
-
-      // Actualizar la lista de películas en la página
-      moviesListElement.innerHTML = '';
-      movies.forEach(movie => {
-        const imageUrl = `https://
-*/
