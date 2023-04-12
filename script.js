@@ -83,7 +83,7 @@ function traerApi() {
         const newImg = document.createElement('img');
         const src=urlBase+tamanio+peliculas[i].poster_path;
         newImg.src = src;
-        newImg.setAttribute('width', '25%');
+        newImg.setAttribute('width', '350px');
         currentDiv.appendChild(newImg);
 
         const newH = document.createElement('h2');
