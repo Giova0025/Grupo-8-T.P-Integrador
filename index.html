@@ -34,7 +34,35 @@
             <h1>REVIEWS</h1>
             <p class="p1">sobre Peliculas</p>
             <p class="p2">registrate ahora para poder leer las reseñas de tus peliculas favoritas</p>
-            <button id="miBoton" class="boton-registro">Registrarse</button>
+            <a href="#container-form" id="miBoton" class="boton-registro">Registrarse</a>
+        </div>
+
+        
+        <div id="container-form" class="container">
+            <form id="form" action="/">
+                <h2>Registrarse</h2>
+                <div class="input-control">
+                    <label for="username">Nombre de Usuario</label>
+                    <input id="username" name="username" type="text">
+                    <div class="error"></div>
+                </div>
+                <div class="input-control">
+                    <label for="email">Email</label>
+                    <input id="email" name="email" type="text">
+                    <div class="error"></div>
+                </div>
+                <div class="input-control">
+                    <label for="password">Contraseña</label>
+                    <input id="password"name="password" type="password">
+                    <div class="error"></div>
+                </div>
+                <div class="input-control">
+                    <label for="password2">Repetir Contraseña</label>
+                    <input id="password2"name="password2" type="password">
+                    <div class="error"></div>
+                </div>
+                <button type="submit">Enviar</button>
+            </form>
         </div>
 
 

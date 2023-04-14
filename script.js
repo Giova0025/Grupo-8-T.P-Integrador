@@ -12,15 +12,81 @@ navToggle.addEventListener("click", () => {
   }
 });
 
-/*registro*/
+/*validacion de datos(formulario de contacto)*/
 
-const boton = document.getElementById("miBoton");
-const elementoActivo = document.getElementById("cuerpoRegistro");
-boton.addEventListener("click", () =>{
-  elementoActivo.classList.remove("activo");
-  elementoActivo.classList.add("desactivo");
+
+const form = document.getElementById('form');
+const nombre = document.getElementById('username');
+const email = document.getElementById('email');
+const contraseña = document.getElementById('password');
+const contraseña2 = document.getElementById('password2');
+
+form.addEventListener('submit', e => {
+    e.preventDefault();
+
+    validateInputs();
 });
 
+const setError = (element, message) => {
+    const inputControl = element.parentElement;
+    const errorDisplay = inputControl.querySelector('.error');
+
+    errorDisplay.innerText = message;
+    inputControl.classList.add('error');
+    inputControl.classList.remove('success')
+}
+
+const setSuccess = element => {
+    const inputControl = element.parentElement;
+    const errorDisplay = inputControl.querySelector('.error');
+
+    errorDisplay.innerText = '';
+    inputControl.classList.add('success');
+    inputControl.classList.remove('error');
+};
+
+const isValidEmail = email => {
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+}
+
+const validateInputs = () => {
+    const nombreValue = nombre.value.trim();
+    const emailValue = email.value.trim();
+    const contraseñaValue = contraseña.value.trim();
+    const contraseña2Value = contraseña2.value.trim();
+
+    if(nombreValue === '') {
+        setError(nombre, 'Se requiere un nombre de usuario');
+    } else {
+        setSuccess(nombre);
+    }
+
+    if(emailValue === '') {
+        setError(email, 'Se requiere un correo electronico');
+    } else if (!isValidEmail(emailValue)) {
+        setError(email, 'El correo electronico no es correcto');
+    } else {
+        setSuccess(email);
+    }
+
+    if(contraseñaValue === '') {
+        setError(contraseña, 'Se requiere contraseña');
+    } else if (contraseñaValue.length < 4 ) {
+        setError(contraseña, 'La contraseña debe tener al menos 4 caracteres')
+    } else {
+        setSuccess(contraseña);
+    }
+
+    if(contraseña2Value === '') {
+        setError(contraseña2, 'Por favor, confirme su contraseña');
+    } else if (contraseña2Value !== contraseñaValue) {
+        setError(contraseña2, "Las contraseñas no coinciden");
+    } else {
+        setSuccess(contraseña2);
+    }
+
+};
 
 
 window.onload = traerApi;
