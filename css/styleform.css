@@ -5,8 +5,13 @@
 }
 main{
 	background: radial-gradient(#281c3e,#0f051d);
-
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
+
 body {
 	font-family: Arial, sans-serif;
 }
