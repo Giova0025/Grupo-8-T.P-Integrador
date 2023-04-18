@@ -23,6 +23,7 @@
 .nav{
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .nav-link{
@@ -30,11 +31,11 @@
   text-decoration: none;
 }
 
-.logo{
-  font-size: 30px;
-  font-weight: bold;
-  padding: 0 40px;
-  line-height: 80px;
+.logo-img{
+  position: relative;
+  left: +20px;
+  top: +5px;
+  height: 70px;
 }
 
 .nav-menu{
@@ -82,7 +83,7 @@ main{
   width: 100%;
   border: red none;
   height: 643px;
-  background-image: url(./img/fondo-registro.jpg);
+  background-image: url(./img/fondo-registro-transformed.jpeg);
   background-color: rgb(50 50 50);
   background-blend-mode: soft-light;
   background-repeat: no-repeat;
