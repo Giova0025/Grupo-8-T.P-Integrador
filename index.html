@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
     <script src="https://kit.fontawesome.com/c48e92f862.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> <!--para las peliculas -->
-    <script defer src="script.js"></script> <!--defer sirve para que se ejecute el script una vez cargue el html -->
+    <script defer src="./js/script.js"></script> <!--defer sirve para que se ejecute el script una vez cargue el html -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet"> <!--fuentes y logos de usuarios-->
     <link rel="preconnect" href="https://fonts.googleapis.com"><!--fuentes y logos de usuarios-->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><!--fuentes y logos de usuarios-->
@@ -18,25 +18,40 @@
 <body>
     <header class="header">
       <nav class="nav">
-          <a href="#" class="logo nav-link">LOGO</a>
+            <div class="logo">
+                <img class="logo-img" src="./img/logo.png">
+            </div>
           <button class="nav-toggle" aria-label="Abrir meu"><i class="fa-solid fa-bars" style="color: #ffffff;"></i></button>
           <ul class="nav-menu">
-             <li class="nav-menu-item"><a href="#" class="nav-menu-link nav-link">Inicio</a></li>
+             <li class="nav-menu-item"><a href="./index.html" class="nav-menu-link nav-link">Inicio</a></li>
              <li class="nav-menu-item"><a href="./secciones/usuarios.html" class="nav-menu-link nav-link">Nosotros</a></li>
-             <li class="nav-menu-item"><a href="#" class="nav-menu-link nav-link">Contactanos</a></li>
-             <li class="nav-menu-item"><a href="#" class="nav-menu-link nav-link">Perfil</a></li>
+             <li class="nav-menu-item"><a href="./secciones/contactanos.html" class="nav-menu-link nav-link">Contactanos</a></li>
+             <li class="nav-menu-item"><a href="#container-form" class="nav-menu-link nav-link">Registrarse</a></li>
           </ul>
       </nav>
     </header>
 
     <main>
+
         <div id="cuerpoRegistro" class="cuerpo1 activo">
             <h1>REVIEWS</h1>
-            <p class="p1">sobre Peliculas</p>
-            <p class="p2">registrate ahora para poder leer las reseñas de tus peliculas favoritas</p>
-            <a href="#container-form" id="miBoton" class="boton-registro">Registrarse</a>
+            <p class="p1">SOBRE PELICULAS</p>
+            <p class="p2">REGISTRATE AHORA PARA PODER LEER LAS RESEÑAS DE TUS PELICULAS FAVORITAS</p>
+            <a href="#container-form" id="miBoton" class="boton-registro">REGISTRARSE</a>
         </div>
 
+
+        <div class="paginador">
+            <button class="first-page" onclick="firstPage()" disabled>Primera</button>
+            <button class="previous-page" onclick="previousPage()" disabled>Anterior</button>
+            <span class="current-page">Página 1</span>
+            <button class="next-page" onclick="nextPage()" disabled>Siguiente</button>
+            <button class="last-page" onclick="lastPage()" disabled>Última</button>
+        </div>
+
+        <div id="id" class="cuerpo2">
+            <div class="peliculas"></div>
+        </div>
         
         <div id="container-form" class="container">
             <form id="form" action="/">
@@ -65,105 +80,20 @@
             </form>
         </div>
 
-
-
-
-
-
-        
-        <div id="id" class="cuerpo2">
-            <div id="peliculas"></div>
-        </div>
-        
-
-
-
-
-
-
-
-
-
-        <div class="nosotros">
-            <section class="team">
-                <br><br><br>
-                <div class="center">
-                    <h1 class="titulo_nosotros">Nuestro equipo</h1>
-                </div>
-        
-                <div class="team-content">
-                    <div class="box">
-                        <img src="./img/01.png">
-                        <h3>Lucas Mesconi</h3>
-                        <h5>Desarrollador Web</h5>
-                        <div class="icons">
-                            <a href="#"><i class="ri-linkedin-fill"></i></a>
-                            <a href="#"><i class="ri-github-fill"></i></a>
-                            <a href="#"><i class="ri-instagram-fill"></i></a>
-                        </div>
-                    </div>
-        
-                    <div class="box">
-                        <img src="./img/02.png">
-                        <h3>Tomas Heisser</h3>
-                        <h5>Desarrollador Web</h5>
-                        <div class="icons">
-                            <a href="#"><i class="ri-linkedin-fill"></i></a>
-                            <a href="#"><i class="ri-github-fill"></i></a>
-                            <a href="#"><i class="ri-instagram-fill"></i></a>
-                        </div>
-                    </div>
-        
-                    <div class="box">
-                        <img src="./img/01.png">
-                        <h3>Agustin Ferigni</h3>
-                        <h5>Desarrollador Web</h5>
-                        <div class="icons">
-                            <a href="#"><i class="ri-linkedin-fill"></i></a>
-                            <a href="#"><i class="ri-github-fill"></i></a>
-                            <a href="#"><i class="ri-instagram-fill"></i></a>
-                        </div>
-                    </div>
-        
-                    <div class="box">
-                        <img src="./img/02.png">
-                        <h3>Giovanni Sanchez</h3>
-                        <h5>Desarrollador Web</h5>
-                        <div class="icons">
-                            <a href="#"><i class="ri-linkedin-fill"></i></a>
-                            <a href="#"><i class="ri-github-fill"></i></a>
-                            <a href="#"><i class="ri-instagram-fill"></i></a>
-                        </div>
-                    </div>
-    
-                    <div class="box">
-                        <img src="./img/01.png">
-                        <h3>Brian Cabezas</h3>
-                        <h5>Desarrollador Web</h5>
-                        <div class="icons">
-                            <a href="#"><i class="ri-linkedin-fill"></i></a>
-                            <a href="#"><i class="ri-github-fill"></i></a>
-                            <a href="#"><i class="ri-instagram-fill"></i></a>
-                        </div>
-                    </div>
-        
-                </div>
-            </section>
-        </div>
     </main>
 
     <footer>
         <div class="footer">
             <div class="redes">
-              <a href="#" class="face"></a> 
-              <a href="#" class="whats"></a> 
-              <a href="#" class="insta"></a> 
+              <a href="https://www.facebook.com/profile.php?id=100084956654182" target="_blank" class="face"></a> 
+              <a href="#" target="_blank" class="whats"></a> 
+              <a href="https://instagram.com/argentinaprograma4.0?igshid=YmMyMTA2M2Y=" target="_blank" class="insta"></a> 
             </div>
             <nav class="extras">
                <ul class="extra-ul">
-                  <li class="extra-f"><a href="#" class="extra-a">Inicio</a></li>
-                  <li class="extra-f"><a href="#" class="extra-a">Quienes Somos</a></li>
-                  <li class="extra-f"><a href="#" class="extra-a">Contactanos</a></li>
+                  <li class="extra-f"><a href="./index.html" class="extra-a">Inicio</a></li>
+                  <li class="extra-f"><a href="./secciones/usuarios.html" class="extra-a">Quienes Somos</a></li>
+                  <li class="extra-f"><a href="./secciones/formulariocontacto/contactanos.html" class="extra-a">Contactanos</a></li>
                </ul>
             </nav>
             <div class="derechos">
