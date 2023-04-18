@@ -26,19 +26,32 @@
              <li class="nav-menu-item"><a href="./index.html" class="nav-menu-link nav-link">Inicio</a></li>
              <li class="nav-menu-item"><a href="./secciones/usuarios.html" class="nav-menu-link nav-link">Nosotros</a></li>
              <li class="nav-menu-item"><a href="./secciones/formulariocontacto/contactanos.html" class="nav-menu-link nav-link">Contactanos</a></li>
-             <li class="nav-menu-item"><a href="#" class="nav-menu-link nav-link">Perfil</a></li>
+             <li class="nav-menu-item"><a href="#container-form" class="nav-menu-link nav-link">Registrarse</a></li>
           </ul>
       </nav>
     </header>
 
     <main>
+
         <div id="cuerpoRegistro" class="cuerpo1 activo">
             <h1>REVIEWS</h1>
-            <p class="p1">sobre Peliculas</p>
-            <p class="p2">registrate ahora para poder leer las reseñas de tus peliculas favoritas</p>
-            <a href="#container-form" id="miBoton" class="boton-registro">Registrarse</a>
+            <p class="p1">SOBRE PELICULAS</p>
+            <p class="p2">REGISTRATE AHORA PARA PODER LEER LAS RESEÑAS DE TUS PELICULAS FAVORITAS</p>
+            <a href="#container-form" id="miBoton" class="boton-registro">REGISTRARSE</a>
         </div>
 
+
+        <div class="paginador">
+            <button class="first-page" onclick="firstPage()" disabled>Primera</button>
+            <button class="previous-page" onclick="previousPage()" disabled>Anterior</button>
+            <span class="current-page">Página 1</span>
+            <button class="next-page" onclick="nextPage()" disabled>Siguiente</button>
+            <button class="last-page" onclick="lastPage()" disabled>Última</button>
+        </div>
+
+        <div id="id" class="cuerpo2">
+            <div class="peliculas"></div>
+        </div>
         
         <div id="container-form" class="container">
             <form id="form" action="/">
@@ -65,23 +78,6 @@
                 </div>
                 <button type="submit">Enviar</button>
             </form>
-        </div>
-
-
-
-
-
-
-        <div class="paginador">
-            <button class="first-page" onclick="firstPage()" disabled>Primera</button>
-            <button class="previous-page" onclick="previousPage()" disabled>Anterior</button>
-            <span class="current-page">Página 1</span>
-            <button class="next-page" onclick="nextPage()" disabled>Siguiente</button>
-            <button class="last-page" onclick="lastPage()" disabled>Última</button>
-        </div>
-
-        <div id="id" class="cuerpo2">
-            <div class="peliculas"></div>
         </div>
 
     </main>
