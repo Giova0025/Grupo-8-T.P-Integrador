@@ -388,7 +388,7 @@ width: 100%;
 @media (max-width: 768px){
   
   .header{
-    height: 60px;
+    height: 70px;
   }
   
   .logo{
@@ -396,6 +396,10 @@ width: 100%;
     font-weight: bold;
     padding: 0 20px;
     line-height: 60px;
+  }
+
+  .logo-img{
+    padding-bottom: 10px;
   }
   
   .nav-menu{
@@ -405,7 +409,7 @@ width: 100%;
     background-color: rgb(15, 14, 14);
     position: fixed;
     left: 0;
-    top: 60px;
+    top: 68px;
     width: 100%;
     padding: 20px 0;
     height: calc(100% - 60px);
@@ -425,6 +429,7 @@ width: 100%;
   
   .nav-toggle{
     display: block;
+    padding-bottom: 20px;
   }
 
   .nav-menu_visible{
